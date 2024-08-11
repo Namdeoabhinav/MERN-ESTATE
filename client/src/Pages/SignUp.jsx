@@ -9,7 +9,7 @@ function SignUp() {
   const handleChange = (e) => {
     setFormData({
       ...formData,
-      [e.target.id]: e.target.value,
+      [e.target.id]: e.target.value, //whatever is changing set that onto its value.
     });
   };
 
@@ -53,7 +53,7 @@ function SignUp() {
           type="text"
           placeholder="username"
           className="border p-3 rounded-lg"
-          id="username"
+          id="username" 
           onChange={handleChange}
         />
         <input

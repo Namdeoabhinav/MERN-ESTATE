@@ -1,7 +1,7 @@
 import express from 'express'
 import { test } from '../controllers/user.controller.js';
 
-const router = express.Router();
+const router = express.Router(); // capable of handling routes independently from the main application.
 
 router.get('/test' , test);
 
