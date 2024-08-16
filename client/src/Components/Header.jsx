@@ -37,6 +37,8 @@ export default function Header() {
             
             <Link to='/profile'>
             {/* Here we are updating the header with the user's google account profile picture */}
+            {/*When clicking on the profile pic we are directed to the profile page. We only want signed in users to go to profile.
+            For this creating the PrivateRoute.jsx */}
             {currentUser? (<img className="rounded-full h-7 w-7 object-cover" src={currentUser.avatar} alt="profile"/>):(<li className=" text-slate-700 hover:underline">
               Sign In
             </li>) }
