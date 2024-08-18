@@ -4,6 +4,7 @@ import dotenv from "dotenv"
 import userRouter from './routes/user.route.js'
 import authRouter from './routes/auth.route.js'
 import cookieParser from 'cookie-parser';
+import listingRouter from './routes/listing.route.js'
 dotenv.config(); // For using the .env file.
 
 mongoose.connect(process.env.MONGO).then(() => {
@@ -26,6 +27,7 @@ app.listen(port , () => {
 //Now creating the User Model.
 app.use('/api/user' , userRouter)
 app.use('/api/auth' , authRouter) 
+app.use('/api/listing' , listingRouter);
 
 //Creating the middleWare for handling the error.
 app.use((err , req , res , next) => {
