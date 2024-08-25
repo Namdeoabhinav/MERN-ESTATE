@@ -13,7 +13,7 @@ export default function CreateListing() {
   const navigate = useNavigate();
   const [files, setFiles] = useState([]);
   const [formData, setFormData] = useState({
-    imageUrls: [],
+    imageURLs: [],
     name: "",
     description: "",
     address: "",
@@ -35,7 +35,7 @@ export default function CreateListing() {
   const { currentUser } = useSelector((state) => state.user);
   const handleImageSubmit = (e) => {
     //Function for getting the files from the user
-    if (files.length > 0 && files.length + formData.imageUrls.length < 7) {
+    if (files.length > 0 && files.length + formData.imageURLs.length < 7) {
       setUploading(true);
       setImageUploadError(false);
       const promises = [];
@@ -48,7 +48,7 @@ export default function CreateListing() {
         .then((urls) => {
           setFormData({
             ...formData,
-            imageUrls: formData.imageUrls.concat(urls),
+            imageURLs: formData.imageURLs.concat(urls),
           });
           setImageUploadError(false);
           setUploading(false);
@@ -92,7 +92,7 @@ export default function CreateListing() {
   const handleRemoveImage = (index) => {
     setFormData({
       ...formData,
-      imageUrls: formData.imageUrls.filter((_, i) => i !== index),
+      imageURLs: formData.imageURLs.filter((_, i) => i !== index),
     });
   };
 
@@ -132,7 +132,7 @@ export default function CreateListing() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      if (formData.imageUrls.length < 1)
+      if (formData.imageURLs.length < 1)
         return setError("You must upload atleast one image.");
       if (+formData.regularPrice < +formData.discountedPrice)
         return setError("Discount price must be lesser than regular price.");
@@ -342,8 +342,8 @@ export default function CreateListing() {
           <p className="text-red-700 text-sm">
             {imageUploadError && imageUploadError}
           </p>
-          {formData.imageUrls.length > 0 &&
-            formData.imageUrls.map((url, index) => (
+          {formData.imageURLs.length > 0 &&
+            formData.imageURLs.map((url, index) => (
               <div
                 key={url || index}
                 className="flex justify-between p-3 border items-center"
