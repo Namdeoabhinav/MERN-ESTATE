@@ -162,6 +162,26 @@ function Profile() {
     }
   };
 
+  const handleListingDelete = async(lisitingId) => {
+    try {
+      const res = await fetch(`/api/listing/delete/${lisitingId}` , {
+        method:'DELETE',
+      });
+
+      const data = await res.json();
+      if(data.success === false){
+        console.log(data.message);
+        return;
+      }
+
+      //we have to remove the deleted lisiting so using method of filtering.
+      setUserListings((prev) => prev.filter((listing) => listing._id !== lisitingId));
+
+    } catch (error) {
+      console.log(error.message);
+    }
+  }
+
   return (
     <div className="p-3 max-w-lg mx-auto">
       <h1 className="text-3xl font-semibold text-center my-7">Profile</h1>
@@ -272,7 +292,7 @@ function Profile() {
               <p>{listing.name}</p>
             </Link>
             <div className="flex flex-col items-center">
-              <button className="text-red-700 uppercase ">DELETE</button>
+              <button onClick={() => {handleListingDelete(listing._id)}} className="text-red-700 uppercase ">DELETE</button>
               <button className="text-green-700 uppercase ">EDIT</button>
             </div>
           </div>
