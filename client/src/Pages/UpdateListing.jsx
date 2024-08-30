@@ -31,7 +31,7 @@ export default function UpdateListing() {
   const [uploading, setUploading] = useState(false);
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(false);
-  //   console.log(formData);
+    console.log(formData);
   useEffect(() => {
     const fetchListing = async () => {
       const listingId = params.listingId;
@@ -380,7 +380,7 @@ export default function UpdateListing() {
             disabled={loading || uploading}
             className="p-3 bg-slate-700 text-white rounded-lg uppercase hover:opacity-95 disabled:opacity-80"
           >
-            {loading ? "Creating..." : "Update Listing"}
+            {loading ? "Updating..." : "Update Listing"}
           </button>
           {error && <p className="text-red-700">{error}</p>}
         </div>
