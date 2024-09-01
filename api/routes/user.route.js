@@ -1,5 +1,5 @@
 import express from 'express'
-import { deleteUser, getUserListings, test, updateUser } from '../controllers/user.controller.js';
+import { deleteUser, getUser, getUserListings, test, updateUser } from '../controllers/user.controller.js';
 import { verifyToken } from '../utils/verifyUser.js';
 
 const router = express.Router(); // capable of handling routes independently from the main application.
@@ -14,6 +14,8 @@ router.delete('/delete/:id' , verifyToken,  deleteUser);
 
 //Creating the listings route for showing the listing of the user.
 router.get('/listings/:id' , verifyToken , getUserListings);
+
+router.get('/:id' , verifyToken , getUser);
 
 export default router;
 
